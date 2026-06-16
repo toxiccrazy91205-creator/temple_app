@@ -36,10 +36,15 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             ZoomIn(
               duration: const Duration(milliseconds: 1200),
-              child: Image.asset(
-                'assets/images/splash_hanuman.png',
-                height: 250,
+              child: Image.network(
+                'https://lh3.googleusercontent.com/aida-public/AB6AXuDkmI7raUBGir2ngJMPeZERz1BVp4RxzBjsGIXEQMqXtmIkQiwEmg34_f07cV5WYzWCStlugAynnTDV2zM0l0WRCox7jMLk3VLAoNCBt6hLpRkX5FBmHLcWY0y6Y-X2Jq_NVpE0kOAcj_TLqaq8HLBFn4kUrwn_QhX7Z1tzH5dWCyeDk26O3da5E1FhJN7_qIvWGpCbhqGUAfGTqzsmgqLXQZcZqq0kBRmWsnsSrzEU2E9DF_YlPpy4XIzMVRSGRYJ64zRAKu77vMVR',
+                height: 280,
                 fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => const Icon(
+                  Icons.temple_hindu_rounded,
+                  size: 120,
+                  color: AppTheme.primarySaffron,
+                ),
               ),
             ),
             const SizedBox(height: 24),
