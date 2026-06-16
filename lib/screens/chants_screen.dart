@@ -1,10 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:animate_do/animate_do.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../theme/app_theme.dart';
 
-class ChantsScreen extends StatelessWidget {
+class ChantsScreen extends StatefulWidget {
   const ChantsScreen({super.key});
+
+  @override
+  State<ChantsScreen> createState() => _ChantsScreenState();
+}
+
+class _ChantsScreenState extends State<ChantsScreen> {
+  String _sunderkandText = 'Loading Sunderkand...';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSunderkand();
+  }
+
+  Future<void> _loadSunderkand() async {
+    try {
+      final text = await rootBundle.loadString('assets/data/sunderkand.txt');
+      if (mounted) {
+        setState(() {
+          _sunderkandText = text;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _sunderkandText = 'Failed to load Sunderkand text. Please try again.';
+        });
+      }
+    }
+  }
+
+  Future<void> _handleRefresh() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    await _loadSunderkand();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Chants reloaded successfully'),
+          backgroundColor: AppTheme.primarySaffron,
+          duration: Duration(seconds: 1),
+        ),
+      );
+    }
+  }
 
   final String _chalisaText = '''
 दोहा :
@@ -184,33 +229,83 @@ class ChantsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hanuman Chants'),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuDkmI7raUBGir2ngJMPeZERz1BVp4RxzBjsGIXEQMqXtmIkQiwEmg34_f07cV5WYzWCStlugAynnTDV2zM0l0WRCox7jMLk3VLAoNCBt6hLpRkX5FBmHLcWY0y6Y-X2Jq_NVpE0kOAcj_TLqaq8HLBFn4kUrwn_QhX7Z1tzH5dWCyeDk26O3da5E1FhJN7_qIvWGpCbhqGUAfGTqzsmgqLXQZcZqq0kBRmWsnsSrzEU2E9DF_YlPpy4XIzMVRSGRYJ64zRAKu77vMVR',
+          ),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(20.0),
-        children: [
-          FadeInDown(
-            duration: const Duration(milliseconds: 800),
-            child: ChantCard(
-              title: 'Hanuman Chalisa',
-              text: _chalisaText,
-              audioAssetPath: 'audio/Hanuman-Chalisa-Hariharan-Gulshan-Kumar-MyMp3Bhojpuri.In-2.mp3',
-              initiallyExpanded: false,
+      child: Container(
+        color: Colors.black.withValues(alpha: 0.5), // Subtle dark tint overlay for readability
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: const Text(
+              'Hanuman Chants',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
+            ),
+            iconTheme: const IconThemeData(color: Colors.white),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.refresh_rounded),
+                tooltip: 'Reload Page',
+                onPressed: _handleRefresh,
+              ),
+            ],
+          ),
+          body: RefreshIndicator(
+            onRefresh: _handleRefresh,
+            color: AppTheme.primarySaffron,
+            backgroundColor: Colors.white,
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+              physics: const AlwaysScrollableScrollPhysics(),
+              children: [
+                FadeInDown(
+                  duration: const Duration(milliseconds: 800),
+                  child: ChantCard(
+                    title: 'Hanuman Chalisa',
+                    text: _chalisaText,
+                    audioAssetPath: 'audio/Hanuman-Chalisa-Hariharan-Gulshan-Kumar-MyMp3Bhojpuri.In-2.mp3',
+                    backgroundImage: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=600&auto=format&fit=crop',
+                    initiallyExpanded: false,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                FadeInUp(
+                  duration: const Duration(milliseconds: 1000),
+                  child: ChantCard(
+                    title: 'Bajrang Baan',
+                    text: _bajrangBaanText,
+                    audioAssetPath: 'audio/bajrang_baan.mp3',
+                    backgroundImage: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=600&auto=format&fit=crop',
+                    initiallyExpanded: false,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                FadeInUp(
+                  duration: const Duration(milliseconds: 1200),
+                  child: ChantCard(
+                    title: 'Sunderkand',
+                    text: _sunderkandText,
+                    audioAssetPath: 'audio/bajrang_baan.mp3', // Placeholder audio so the player shows
+                    backgroundImage: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?q=80&w=600&auto=format&fit=crop',
+                    initiallyExpanded: false,
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 24),
-          FadeInUp(
-            duration: const Duration(milliseconds: 1000),
-            child: ChantCard(
-              title: 'Bajrang Baan',
-              text: _bajrangBaanText,
-              audioAssetPath: 'audio/bajrang_baan.mp3',
-              initiallyExpanded: false,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -222,6 +317,7 @@ class ChantCard extends StatefulWidget {
   final String? audioAssetPath;
   final String? audioUrl;
   final bool initiallyExpanded;
+  final String? backgroundImage;
 
   const ChantCard({
     super.key,
@@ -230,6 +326,7 @@ class ChantCard extends StatefulWidget {
     this.audioAssetPath,
     this.audioUrl,
     this.initiallyExpanded = false,
+    this.backgroundImage,
   });
 
   @override
@@ -334,13 +431,13 @@ class _ChantCardState extends State<ChantCard> {
 
     return Container(
       padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.only(bottom: 24),
+      margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white.withValues(alpha: 0.92), // Slightly translucent white for glassmorphic style
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.primarySaffron.withValues(alpha: 0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -350,24 +447,28 @@ class _ChantCardState extends State<ChantCard> {
         children: [
           Text(
             '${widget.title} Audio',
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: AppTheme.deepCharcoal,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 8),
           Row(
             children: [
-              Text(_formatDuration(_position)),
+              Text(_formatDuration(_position), style: const TextStyle(color: AppTheme.deepCharcoal)),
               Expanded(
                 child: Slider(
                   value: currentPosition,
                   max: maxDuration,
                   activeColor: AppTheme.primarySaffron,
+                  inactiveColor: AppTheme.primarySaffron.withValues(alpha: 0.3),
                   onChanged: (value) async {
                     final position = Duration(milliseconds: value.toInt());
                     await _audioPlayer.seek(position);
                   },
                 ),
               ),
-              Text(_formatDuration(_duration)),
+              Text(_formatDuration(_duration), style: const TextStyle(color: AppTheme.deepCharcoal)),
             ],
           ),
           Row(
@@ -404,44 +505,87 @@ class _ChantCardState extends State<ChantCard> {
   Widget build(BuildContext context) {
     final hasAudio = widget.audioAssetPath != null || widget.audioUrl != null;
 
-    return Card(
-      elevation: 4,
-      shadowColor: AppTheme.primarySaffron.withValues(alpha: 0.2),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Theme(
-        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-        child: ExpansionTile(
-          initiallyExpanded: widget.initiallyExpanded,
-          title: Text(
-            widget.title,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  color: AppTheme.deepCharcoal,
-                  fontWeight: FontWeight.bold,
-                ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.25),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
           ),
-          iconColor: AppTheme.primarySaffron,
-          collapsedIconColor: AppTheme.primarySaffron,
-          childrenPadding: const EdgeInsets.all(24),
-          children: [
-            if (hasAudio) _buildAudioPlayer(),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: AppTheme.warmWhite,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppTheme.outlineVariant.withValues(alpha: 0.5)),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppTheme.warmWhite,
+            image: widget.backgroundImage != null
+                ? DecorationImage(
+                    image: NetworkImage(widget.backgroundImage!),
+                    fit: BoxFit.cover,
+                  )
+                : null,
+          ),
+          child: Container(
+            color: Colors.black.withValues(alpha: 0.55), // Translucent dark overlay for high text contrast
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                dividerColor: Colors.transparent,
               ),
-              child: Text(
-                widget.text,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      height: 2.0,
-                      color: AppTheme.deepCharcoal.withValues(alpha: 0.9),
+              child: ExpansionTile(
+                initiallyExpanded: widget.initiallyExpanded,
+                title: Text(
+                  widget.title,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        shadows: [
+                          const Shadow(
+                            color: Colors.black,
+                            offset: Offset(0, 2),
+                            blurRadius: 4,
+                          ),
+                        ],
+                      ),
+                ),
+                iconColor: Colors.white,
+                collapsedIconColor: Colors.white,
+                childrenPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                children: [
+                  if (hasAudio) _buildAudioPlayer(),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.35), // Background overlay for text block to maximize readability
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.15),
+                      ),
                     ),
+                    child: Text(
+                      widget.text,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            height: 2.0,
+                            color: Colors.white.withValues(alpha: 0.95),
+                            fontWeight: FontWeight.w500,
+                            shadows: [
+                              const Shadow(
+                                color: Colors.black87,
+                                offset: Offset(0, 1.5),
+                                blurRadius: 4,
+                              ),
+                            ],
+                          ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

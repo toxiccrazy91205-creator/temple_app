@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hanuman Chalisa &amp; Chants</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary": "#865224",
+                  "secondary-fixed-dim": "#fdb881",
+                  "tertiary-fixed": "#ffdadb",
+                  "surface-variant": "#f3dfd1",
+                  "surface-tint": "#914d00",
+                  "on-secondary-fixed": "#2f1500",
+                  "surface-bright": "#fff8f5",
+                  "surface-container-lowest": "#ffffff",
+                  "on-tertiary-fixed-variant": "#91002d",
+                  "tertiary-fixed-dim": "#ffb2b8",
+                  "primary-fixed": "#ffdcc3",
+                  "primary-container": "#ff8b00",
+                  "error-container": "#ffdad6",
+                  "secondary-fixed": "#ffdcc3",
+                  "inverse-on-surface": "#ffede3",
+                  "on-tertiary": "#ffffff",
+                  "surface-dim": "#ead6c9",
+                  "surface-container-low": "#fff1e9",
+                  "on-secondary": "#ffffff",
+                  "on-primary-fixed": "#2f1500",
+                  "tertiary-container": "#ff8492",
+                  "inverse-surface": "#3a2e25",
+                  "on-tertiary-fixed": "#40000f",
+                  "on-secondary-container": "#784619",
+                  "surface": "#fff8f5",
+                  "error": "#ba1a1a",
+                  "on-error-container": "#93000a",
+                  "primary": "#914d00",
+                  "surface-container-high": "#f9e4d7",
+                  "on-primary-container": "#613200",
+                  "on-primary-fixed-variant": "#6e3900",
+                  "on-background": "#241912",
+                  "outline": "#8a7362",
+                  "surface-container": "#ffeadd",
+                  "surface-container-highest": "#f3dfd1",
+                  "on-primary": "#ffffff",
+                  "on-error": "#ffffff",
+                  "on-surface-variant": "#564334",
+                  "on-surface": "#241912",
+                  "outline-variant": "#ddc1ae",
+                  "on-secondary-fixed-variant": "#6a3b0e",
+                  "secondary-container": "#fdb881",
+                  "background": "#fff8f5",
+                  "primary-fixed-dim": "#ffb77e",
+                  "inverse-primary": "#ffb77e",
+                  "tertiary": "#be003d",
+                  "on-tertiary-container": "#810027"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["\"Source Serif 4\""],
+                  "display": ["\"Source Serif 4\""],
+                  "body": ["Be Vietnam Pro"],
+                  "label": ["Be Vietnam Pro"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #ddc1ae;
+      border-radius: 10px;
+    }
+    .active-verse {
+      background: linear-gradient(90deg, rgba(255, 139, 0, 0.08) 0%, rgba(255, 139, 0, 0) 100%);
+      border-left: 4px solid #ff8b00;
+    }
+    .mandala-bg {
+      background-image: radial-gradient(#ff8b00 0.5px, transparent 0.5px);
+      background-size: 24px 24px;
+      opacity: 0.05;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body overflow-x-hidden">
+<!-- Main Container -->
+<div class="relative flex flex-col min-h-screen max-w-md mx-auto bg-white shadow-2xl">
+<!-- Top Bar (Shared Component Strategy) -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-surface-container">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-[#181510] flex size-12 shrink-0 items-center cursor-pointer" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-[#181510] text-lg font-headline font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Hanuman Chalisa</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#181510] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<div class="text-[#181510]" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">search</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Language Toggle -->
+<div class="flex px-4 py-3">
+<div class="flex h-10 flex-1 items-center justify-center rounded-xl bg-surface-container-low p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white has-[:checked]:shadow-sm has-[:checked]:text-primary text-outline text-sm font-medium transition-all">
+<span class="truncate">Hindi</span>
+<input checked="" class="invisible w-0" name="lang-toggle" onchange="toggleLang('hindi')" type="radio" value="Hindi"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white has-[:checked]:shadow-sm has-[:checked]:text-primary text-outline text-sm font-medium transition-all">
+<span class="truncate">English</span>
+<input class="invisible w-0" name="lang-toggle" onchange="toggleLang('english')" type="radio" value="English"/>
+</label>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar relative">
+<div class="mandala-bg absolute inset-0 pointer-events-none"></div>
+<!-- Hero Image -->
+<div class="px-4 pt-4">
+<div class="relative h-48 w-full rounded-2xl overflow-hidden shadow-lg group">
+<img alt="Hanuman Darshan" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A majestic and divine digital painting of Lord Hanuman in a meditative posture, set against a backdrop of a glowing ancient temple during a vibrant sunset. The lighting is ethereal, with golden saffron hues and warm vermillion accents highlighting his powerful yet serene form. The art style is a blend of traditional Indian realism and modern cinematic lighting, evoking a deep sense of devotion, peace, and spiritual strength." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbgAUEQicO004KXUomF6RL9JUqXSjD2Li5UnzJn5uOvWkkCLV0sehnco2kogQ49OOYVMR0iHMy4XpniTUHmrITYwcu1Bac1MBWYYtr9Q7_sfG1Ye0GGAu1nAJwF6EYUwKAy34nLt04HfSB5GqgLkS8Smv8fMmNWpCaqZKINP0ZdhmtMm8bz7fcaRgqqH2JRl9fn_V-okQ3ESatKC36LMpIK0GdhSonmYSXWw3H8KNTiQIRcaOmFBfnaAl8PhIqkcy40OQx00YmPCus"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 text-white">
+<p class="text-xs font-label uppercase tracking-widest opacity-80">Daily Path</p>
+<h1 class="text-2xl font-headline font-bold">Goswami Tulsidas</h1>
+</div>
+</div>
+</div>
+<!-- Verse Section -->
+<section class="px-6 py-8 space-y-8" id="lyrics-container">
+<!-- Verse 1 -->
+<div class="verse-block active-verse -mx-6 px-6 py-4 transition-all duration-300">
+<div class="hindi-text space-y-2">
+<h3 class="text-primary font-headline font-semibold text-lg">Doha</h3>
+<p class="text-on-surface text-xl leading-relaxed">श्रीगुरु चरन सरोज रज निज मनु मुकुरु सुधारि।<br/>बरनऊँ रघुबर बिमल जसु जो दायक फल चारि॥</p>
+</div>
+<div class="english-text hidden space-y-2">
+<h3 class="text-primary font-headline font-semibold text-lg italic">Doha</h3>
+<p class="text-on-surface-variant italic leading-relaxed">Shri Guru Charan Saroj Raj, Nij Manu Mukuru Sudhari |<br/>Barnau Raghuvar Bimal Jasu, Jo Dayaku Phal Chari ||</p>
+</div>
+</div>
+<!-- Verse 2 -->
+<div class="verse-block px-2 py-2">
+<div class="hindi-text space-y-2">
+<p class="text-on-surface text-xl leading-relaxed">बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।<br/>बल बुधि बिद्या देहु मोहिं, हरहु कलेस बिकार॥</p>
+</div>
+<div class="english-text hidden space-y-2">
+<p class="text-on-surface-variant italic leading-relaxed">Buddhiheen Tanu Jaanike, Sumirau Pavan Kumar |<br/>Bal Budhi Vidya Dehu Mohi, Harahu Kalesh Bikaar ||</p>
+</div>
+</div>
+<!-- Verse 3 -->
+<div class="verse-block px-2 py-2">
+<div class="hindi-text space-y-2">
+<p class="text-on-surface text-xl leading-relaxed">जय हनुमान ज्ञान गुन सागर।<br/>जय कपीस तिहुँ लोक उजागर॥</p>
+</div>
+<div class="english-text hidden space-y-2">
+<p class="text-on-surface-variant italic leading-relaxed">Jai Hanuman Gyan Gun Sagar |<br/>Jai Kapis Tihun Lok Ujagar ||</p>
+</div>
+</div>
+<!-- Verse 4 -->
+<div class="verse-block px-2 py-2">
+<div class="hindi-text space-y-2">
+<p class="text-on-surface text-xl leading-relaxed">राम दूत अतुलित बल धामा।<br/>अंजनि-पुत्र पवनसुत नामा॥</p>
+</div>
+<div class="english-text hidden space-y-2">
+<p class="text-on-surface-variant italic leading-relaxed">Ram Doot Atulit Bal Dhama |<br/>Anjani-Putra Pavansut Nama ||</p>
+</div>
+</div>
+</section>
+<!-- More Chants Section -->
+<section class="px-4 pb-32">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-headline font-bold text-on-surface">Popular Chants</h2>
+<button class="text-sm font-label text-primary">View All</button>
+</div>
+<div class="space-y-3">
+<!-- Bhajan Card -->
+<div class="flex items-center gap-4 p-3 rounded-xl border border-surface-container bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">music_note</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm text-on-surface">Sankat Mochan</h4>
+<p class="text-xs text-outline">Gulshan Kumar • 06:42</p>
+</div>
+<button class="size-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+<!-- Bhajan Card -->
+<div class="flex items-center gap-4 p-3 rounded-xl border border-surface-container bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">music_note</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm text-on-surface">Hanuman Ashtak</h4>
+<p class="text-xs text-outline">Hariharan • 05:15</p>
+</div>
+<button class="size-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+<!-- Bhajan Card -->
+<div class="flex items-center gap-4 p-3 rounded-xl border border-surface-container bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">music_note</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm text-on-surface">Sunderkand</h4>
+<p class="text-xs text-outline">Pt. Pawan Tiwar • 45:20</p>
+</div>
+<button class="size-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Audio Player (Sticky Bottom) -->
+<div class="absolute bottom-[64px] left-0 right-0 px-4 pb-4">
+<div class="bg-primary-container/20 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-primary-container/30">
+<div class="flex items-center justify-between mb-2">
+<div class="flex-1">
+<p class="text-xs font-label text-on-primary-container/80 uppercase">Now Playing</p>
+<h3 class="font-bold text-on-primary-container">Hanuman Chalisa (Original)</h3>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary-container cursor-pointer">skip_previous</span>
+<button class="size-10 rounded-full bg-primary flex items-center justify-center text-white shadow-lg active:scale-95 transition-transform" id="main-play-btn">
+<span class="material-symbols-outlined" id="play-icon">play_arrow</span>
+</button>
+<span class="material-symbols-outlined text-on-primary-container cursor-pointer">skip_next</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="relative w-full h-1.5 bg-on-primary-container/10 rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary w-1/3 rounded-full" id="progress-bar"></div>
+</div>
+<div class="flex justify-between mt-1">
+<span class="text-[10px] text-on-primary-container/60">01:42</span>
+<span class="text-[10px] text-on-primary-container/60">09:38</span>
+</div>
+</div>
+</div>
+<!-- Bottom Nav Bar (Shared) -->
+<nav class="sticky bottom-0 z-50 bg-white border-t border-surface-container-high flex px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-outline transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="House">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-[10px] font-medium leading-normal">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="Chair" data-weight="fill">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spatial_audio_off</span>
+</div>
+<p class="text-[10px] font-medium leading-normal">Chants</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-outline transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="Mosque">
+<span class="material-symbols-outlined">temple_hindu</span>
+</div>
+<p class="text-[10px] font-medium leading-normal">Temple</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-outline transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="User">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+<p class="text-[10px] font-medium leading-normal">Profile</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-outline transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="Gear">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-[10px] font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<script>
+    // Language Toggle logic
+    function toggleLang(lang) {
+      const hindiTexts = document.querySelectorAll('.hindi-text');
+      const englishTexts = document.querySelectorAll('.english-text');
+      
+      if (lang === 'hindi') {
+        hindiTexts.forEach(el => el.classList.remove('hidden'));
+        englishTexts.forEach(el => el.classList.add('hidden'));
+      } else {
+        hindiTexts.forEach(el => el.classList.add('hidden'));
+        englishTexts.forEach(el => el.classList.remove('hidden'));
+      }
+    }
+
+    // Audio Player Toggle
+    const playBtn = document.getElementById('main-play-btn');
+    const playIcon = document.getElementById('play-icon');
+    let isPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
+      
+      if (isPlaying) {
+        animateProgress();
+      }
+    });
+
+    // Simple progress animation simulation
+    let progress = 33;
+    const progressBar = document.getElementById('progress-bar');
+    
+    function animateProgress() {
+      if (!isPlaying) return;
+      progress += 0.1;
+      if (progress > 100) progress = 0;
+      progressBar.style.width = progress + '%';
+      requestAnimationFrame(animateProgress);
+    }
+
+    // Highlight verses based on scroll (basic implementation)
+    const lyricsContainer = document.querySelector('main');
+    const verses = document.querySelectorAll('.verse-block');
+    
+    lyricsContainer.addEventListener('scroll', () => {
+      let current = "";
+      verses.forEach((verse) => {
+        const verseTop = verse.offsetTop - 300;
+        if (lyricsContainer.scrollTop >= verseTop) {
+          current = verse;
+        }
+      });
+
+      verses.forEach((verse) => {
+        verse.classList.remove('active-verse', '-mx-6', 'px-6', 'bg-primary/5');
+        if (verse === current) {
+          verse.classList.add('active-verse', '-mx-6', 'px-6');
+        }
+      });
+    });
+  </script>
+</body></html>

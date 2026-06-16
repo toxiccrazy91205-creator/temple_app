@@ -25,29 +25,41 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
       'url':
           'https://lh3.googleusercontent.com/aida-public/AB6AXuCOH0gXym4GRWPo2faO2dduV1fT3G00yjsElB-TUeHgOGP-a9643txSCuYSprxJwdC-Lf65ey523iPUmtVQMu03ZbQg_WCs6noWIAq4wzJrMEig8M0yPKaHJ9UezBsQqNviMEAUT9VVvnCz4KvuWMDXiZR01U2VyBOK809LMdT4-LjOKzbYknGKwkZ1To4JdYRcRoeZhDDt-f1ecTXTRMFTVR3svOEyGQpsAlB5zYywLBCtFLHzUZeqP21imtSHkgWYHqsKU3pqSiuH',
       'label': 'Hanuman Jayanti 2023',
-      'span': 'full',
-      'height': '192',
     },
     {
       'url':
           'https://lh3.googleusercontent.com/aida-public/AB6AXuC8ZRhCMnQhRSIVrDFBHFmqHM0DMqUwMq2skaAxZmr_07aW72UNh3ymqN8WuBe7bUy0oByjlWzeysYsdHqw37dIGJpTphamRA1PlPG2C6Kp2fb3GEpNt7cybZKU4EqZkLuVftZ9Zy1U2F3FCmUDOWJmEN8KSUTk_oMaXx5WlKMQxfNZCZ_92H46c5zaX58NfFLs5E-4cGfZYCp8FWib3c94c2VkCWrFNEEACw310XuCTkkAFvRfgWktEQ0I7kozM8WwUzdHDswqV7sf',
       'label': 'Stone Carvings',
-      'span': 'half',
-      'height': '160',
     },
     {
       'url':
           'https://lh3.googleusercontent.com/aida-public/AB6AXuCMkwtpHj8oA6hvQ0QLwUfcbbGzNMJ-7r9r-i1FbcnPDhqFQfFvPJCumuvm0qSVOR3cPwry030urA4fFey97b2CbdzUiU3yPlR6kJpePz3FyyraBvorjHLAhIFXTamA2FWN-knNQdM0ZHA5Jw3oIst6ZPONPB4fVgkrNHuHQsQEX9jCMv66atKaVmO9S359K6rqDOIkxzbXLUQ55zPe4GvSeqwtzVlrtf-3IA02yrUjj6Jakay54nitxCD0JaY5KsmsgGrjLdcQioL-',
       'label': 'Inner Sanctum',
-      'span': 'half',
-      'height': '160',
+    },
+    {
+      'url':
+          'https://images.unsplash.com/photo-1608976451610-d87c2fb8b839?q=80&w=600&auto=format&fit=crop',
+      'label': 'Aarti & Lights',
+    },
+    {
+      'url':
+          'https://images.unsplash.com/photo-1561361513-2d000a50f0db?q=80&w=600&auto=format&fit=crop',
+      'label': 'Temple Bells',
+    },
+    {
+      'url':
+          'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?q=80&w=600&auto=format&fit=crop',
+      'label': 'Sacred Havan',
     },
     {
       'url':
           'https://lh3.googleusercontent.com/aida-public/AB6AXuAmBJBzZPZuEn1e8gjtzwvOJKKKEbTYRbtTs045vtKf4C7OT7xzUcEhqgKl_yRyxfIHpIuHMDOHHRJuGgLxkGzCQogz-H6Xi0LQKpq8ihkJQVvd1ieYOyiEciqro7nlWh8JgZouFbYvL11cS06m5zjx0NBO3dZm9-rwXjHHFaFkrtJvRYxIhQ7lk1j5E_j8vLVGeJls-IEQOXbJFwNM3b3MimcrUXpy3S7RZfBFSjQdBqeCajwNqrCLZrtMIouTc5XAZCQvsa7iPcXO',
       'label': 'Marigold Offerings',
-      'span': 'half',
-      'height': '128',
+    },
+    {
+      'url':
+          'https://images.unsplash.com/photo-1609137144813-2bbfe78ff56f?q=80&w=600&auto=format&fit=crop',
+      'label': 'Evening Darshan',
     },
   ];
 
@@ -404,7 +416,7 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
           fullWidth: true,
         ),
         const SizedBox(height: 10),
-        // Row: two half-width
+        // Row 1: Item 1 & Item 2
         Row(
           children: [
             Expanded(
@@ -427,7 +439,7 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
           ],
         ),
         const SizedBox(height: 10),
-        // Row: one image + "view all" tile
+        // Row 2: Item 3 & Item 4 (New images)
         Row(
           children: [
             Expanded(
@@ -435,6 +447,52 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
                 url: _galleryItems[3]['url']!,
                 label: _galleryItems[3]['label']!,
                 index: 3,
+                height: 150,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: _buildGalleryTile(
+                url: _galleryItems[4]['url']!,
+                label: _galleryItems[4]['label']!,
+                index: 4,
+                height: 150,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        // Row 3: Item 5 & Item 6
+        Row(
+          children: [
+            Expanded(
+              child: _buildGalleryTile(
+                url: _galleryItems[5]['url']!,
+                label: _galleryItems[5]['label']!,
+                index: 5,
+                height: 150,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: _buildGalleryTile(
+                url: _galleryItems[6]['url']!,
+                label: _galleryItems[6]['label']!,
+                index: 6,
+                height: 150,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        // Row 4: Item 7 & "View All" tile
+        Row(
+          children: [
+            Expanded(
+              child: _buildGalleryTile(
+                url: _galleryItems[7]['url']!,
+                label: _galleryItems[7]['label']!,
+                index: 7,
                 height: 120,
               ),
             ),
