@@ -102,7 +102,7 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
                   child: Image.network(
                     'https://lh3.googleusercontent.com/aida-public/AB6AXuByxAuyGPhuuD4HS4_sKV1G2XtH1kGC9XN2laaQqdVklIrcqu6JJ3vrAMXlqlgOmPoy-Z_VgAZNy4Rx3JSjTDkxPQAG_yEgdO7aWeygxE1YQCCtxuk3X0-54X2XD0wiAAvYqPB013RaNy04BRnCiESA3Jg-hLRFEp2pDbpg8eY3T-28LtQ3sFvh9FZriLqF3SPm2MMKofsHcj-cgkCKdKhdUNA58etL18BvEyTdwbtjAacPAz--59lpgkUuh4NQI71P0nEbOhN82yu-',
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => const Icon(
+                    errorBuilder: (_, _, _) => const Icon(
                       Icons.person_rounded,
                       color: AppTheme.primarySaffron,
                       size: 20,
@@ -119,7 +119,7 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
                   Image.network(
                     _heroUrl,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Container(
+                    errorBuilder: (_, _, _) => Container(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           colors: [Color(0xFFFF9933), Color(0xFF8B0000)],
@@ -314,7 +314,7 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
                                 child: Image.network(
                                   _mapUrl,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (_, __, ___) => Container(
+                                  errorBuilder: (_, _, _) => Container(
                                     height: 180,
                                     color: const Color(0xFFFFF1E9),
                                     child: const Center(
@@ -575,7 +575,7 @@ class _TempleInfoScreenState extends State<TempleInfoScreen> {
                 child: Image.network(
                   url,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => Container(
+                  errorBuilder: (_, _, _) => Container(
                     color: const Color(0xFFFFF1E9),
                     child: const Icon(Icons.image_rounded,
                         color: AppTheme.primarySaffron, size: 36),

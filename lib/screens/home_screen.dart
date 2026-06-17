@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen>
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,
-                  errorBuilder: (_, __, ___) => Container(
+                  errorBuilder: (_, _, _) => Container(
                     color: const Color(0xFFFF9933),
                     child: const Icon(
                       Icons.temple_hindu_rounded,

@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Image.network(
             imageUrl,
             fit: BoxFit.cover,
-            errorBuilder: (_, __, ___) => Container(
+            errorBuilder: (_, _, _) => Container(
               color: AppTheme.warmWhite,
               child: const Center(
                 child: Icon(
